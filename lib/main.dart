@@ -11,7 +11,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainScreen());
+    return MaterialApp(home: MainScreen(), debugShowCheckedModeBanner: false);
   }
 }
 
@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<BottomNavigationBarItem> _items = <BottomNavigationBarItem>[
+    final List<BottomNavigationBarItem> items = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(
           Icons.bar_chart_outlined,
@@ -79,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           BottomNavigationBar(
-            items: _items,
+            items: items,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
             iconSize: MediaQuery.of(context).size.height * 0.06,
@@ -89,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
             bottom: 7,
             left: 0,
             child: Container(
-              width: MediaQuery.of(context).size.width / _items.length,
+              width: MediaQuery.of(context).size.width / items.length,
               height: 4,
               decoration: BoxDecoration(
                 color: Colors.black,
@@ -98,7 +98,7 @@ class _MainScreenState extends State<MainScreen> {
               margin: EdgeInsets.only(
                 left:
                     _selectedIndex *
-                    (MediaQuery.of(context).size.width / _items.length),
+                    (MediaQuery.of(context).size.width / items.length),
               ),
             ),
           ),
