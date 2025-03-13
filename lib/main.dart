@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interv_page/assets/app_bar_title.dart';
+import 'package:interv_page/components/app_bar_title.dart';
 import 'package:interv_page/pages/center_page.dart';
 
 void main() {
@@ -11,7 +11,27 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainScreen(), debugShowCheckedModeBanner: false);
+    return MaterialApp(
+      home: MainScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(color: Colors.white),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.deepPurple[200],
+          selectedIconTheme: IconThemeData(
+            size: MediaQuery.of(context).size.height * 0.065,
+          ),
+          unselectedIconTheme: IconThemeData(
+            size: MediaQuery.of(context).size.height * 0.05,
+          ),
+          backgroundColor: Colors.white,
+        ),
+      ),
+    );
   }
 }
 
@@ -40,70 +60,28 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final List<BottomNavigationBarItem> items = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.bar_chart_outlined,
-          size:
-              _selectedIndex == 0
-                  ? MediaQuery.of(context).size.height * 0.065
-                  : MediaQuery.of(context).size.height * 0.05,
-        ),
-        label: '',
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.add_circle_rounded,
-          size:
-              _selectedIndex == 1
-                  ? MediaQuery.of(context).size.height * 0.065
-                  : MediaQuery.of(context).size.height * 0.05,
-        ),
-        label: '',
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(
-          Icons.list_rounded,
-          size:
-              _selectedIndex == 2
-                  ? MediaQuery.of(context).size.height * 0.065
-                  : MediaQuery.of(context).size.height * 0.05,
-        ),
-        label: '',
-      ),
+      getBottomNavBarItem(context, Icons.bar_chart_outlined, 0),
+      getBottomNavBarItem(context, Icons.add_circle_rounded, 1),
+      getBottomNavBarItem(context, Icons.list_rounded, 2),
     ];
 
     return Scaffold(
       appBar: AppBar(title: AppBarTitle()),
       body: _pageOptions[_selectedIndex],
-      bottomNavigationBar: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          BottomNavigationBar(
-            items: items,
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-            iconSize: MediaQuery.of(context).size.height * 0.06,
-            type: BottomNavigationBarType.fixed,
-          ),
-          Positioned(
-            bottom: 7,
-            left: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width / items.length,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: EdgeInsets.only(
-                left:
-                    _selectedIndex *
-                    (MediaQuery.of(context).size.width / items.length),
-              ),
-            ),
-          ),
-        ],
+      bottomNavigationBar: BottomNavigationBar(
+        items: items,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
+  }
+
+  BottomNavigationBarItem getBottomNavBarItem(
+    BuildContext context,
+    IconData iconData,
+    int triggerIndex,
+  ) {
+    return BottomNavigationBarItem(icon: Icon(iconData), label: '');
   }
 }

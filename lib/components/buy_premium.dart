@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interv_page/assets/uni_button.dart';
+import 'package:interv_page/components/uni_button.dart';
 
 class BuyPremium extends StatelessWidget {
   const BuyPremium({super.key});

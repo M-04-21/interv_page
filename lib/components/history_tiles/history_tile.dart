@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interv_page/assets/history_tiles/checkboxes.dart';
+import 'package:interv_page/components/history_tiles/checkboxes.dart';
 
 enum TemperatureStatus { ok, high, fever }
 
@@ -41,11 +41,57 @@ class HistoryTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.02,
-                vertical: MediaQuery.of(context).size.height * 0.01,
+              padding: EdgeInsets.fromLTRB(
+                MediaQuery.of(context).size.width * 0.02,
+                MediaQuery.of(context).size.height * 0.04,
+                MediaQuery.of(context).size.width * 0.02,
+                MediaQuery.of(context).size.height * 0.01,
               ),
-              child: Column(
+              child: RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: '$date ',
+                      style: TextStyle(fontWeight: FontWeight.w400),
+                    ),
+                    TextSpan(
+                      text: '$time\n',
+                      style: TextStyle(fontWeight: FontWeight.w200),
+                    ),
+                    WidgetSpan(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.027,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '${temperature.toStringAsFixed(1)}°F',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          _checkBoxes[status]!,
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -62,12 +108,6 @@ class HistoryTile extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w700),
                   ),
                 ],
-              ),
-            ),
-          ),
-          _checkBoxes[status]!,
-        ],
-      ),
-    );
-  }
-}
+              )
+
+*/
