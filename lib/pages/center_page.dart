@@ -43,7 +43,7 @@ class _CenterPageState extends State<CenterPage> {
           'Last records:',
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(

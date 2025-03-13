@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OkCheckBox extends StatelessWidget {
   const OkCheckBox({super.key});
@@ -7,13 +8,7 @@ class OkCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 0.015),
-      decoration: BoxDecoration(
-        color: Colors.greenAccent,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      height: MediaQuery.of(context).size.width * 0.1,
-      width: MediaQuery.of(context).size.width * 0.1,
-      child: Icon(Icons.done, color: Colors.green),
+      child: SvgPicture.asset('assets/svg/ok_rounded.svg'),
     );
   }
 }
@@ -25,13 +20,7 @@ class HighCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 0.015),
-      decoration: BoxDecoration(
-        color: Colors.red[100],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      height: MediaQuery.of(context).size.width * 0.1,
-      width: MediaQuery.of(context).size.width * 0.1,
-      child: Icon(Icons.keyboard_arrow_up, color: Colors.red[300]),
+      child: SvgPicture.asset('assets/svg/high_rounded.svg'),
     );
   }
 }
@@ -43,13 +32,7 @@ class FeverCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: MediaQuery.of(context).size.height * 0.015),
-      decoration: BoxDecoration(
-        color: Colors.red[200],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      height: MediaQuery.of(context).size.width * 0.1,
-      width: MediaQuery.of(context).size.width * 0.1,
-      child: Icon(Icons.keyboard_double_arrow_up, color: Colors.red),
+      child: SvgPicture.asset('assets/svg/fever_rounded.svg'),
     );
   }
 }

@@ -26,13 +26,13 @@ class HistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.width * 0.27,
+      height: MediaQuery.of(context).size.width * 0.3,
       width: MediaQuery.of(context).size.width * 0.3,
       child: Stack(
         children: [
           Container(
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.02,
+              top: MediaQuery.of(context).size.height * 0.03,
               bottom: MediaQuery.of(context).size.height * 0.005,
             ),
             decoration: BoxDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:interv_page/components/app_bar_title.dart';
 import 'package:interv_page/pages/center_page.dart';
 
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
       home: MainScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(color: Colors.white),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
